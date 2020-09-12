@@ -70,6 +70,17 @@
 			}
 		}
 
+		public function active(){
+			$sql = 'select * from todos where complete = 0';
+			try{
+				$todos = $this->db->prepare($sql);
+				$todos->execute();
+				return $todos->fetchALl();
+			}catch(PDOException $e){
+				echo $e->getMessage();
+			}
+		}
+
 		public function delete(){
 			$sql = 'delete from todos where complete = 1';
 			try{

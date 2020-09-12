@@ -14,7 +14,6 @@
 			echo json_encode($return);
 		}
 		elseif ($type == "new"){
-//			echo $_POST["title"];
 			$todos = new TodoController;
 			$req = new Struct;
 			$req->title = $_GET["title"];
@@ -30,14 +29,29 @@
 			$req->title = $_GET["title"];
 			$req->complete = $_GET["status"];
 //			if($todos->updateTodo($req));
-				echo json_encode($todos->updateTodo($req));
+			echo json_encode($todos->updateTodo($req));
 		}
 		elseif($type == "completed"){
 			$todos = new TodoController;
-//			echo $todos->allCompleted();
-			if($return["todo"] = $todos->allCompleted()){
-				echo json_encode($return);
+			$res = $todos->allCompleted();
+			if( count($res) > 0){
+				$return["todo"] = $res;
 			}
+			else{
+				$return["err"] = true;
+			}
+			echo json_encode($return);
+		}
+		elseif($type == "active"){
+			$todos = new TodoController;
+			$res = $todos->allActive();
+			if( count($res) > 0){
+				$return["todo"] = $res;
+			}
+			else{
+				$return["err"] = true;
+			}
+			echo json_encode($return);
 		}
 		elseif($type == "del"){
 			$todos = new TodoController;

@@ -2,12 +2,88 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(94, 94, 94);
 }
-.editor{
-    height: 100%;
+
+.container{
+    width: 50%;
+    margin:0 auto;
+    padding: 20px;
+    -webkit-box-shadow: 0px 10px 30px -7px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 10px 30px -7px rgba(0,0,0,0.4);
+    box-shadow: 0px 10px 30px -7px rgba(0,0,0,0.4);
+    z-index: 99;
+
+}
+
+h1{
+    color: rgb(204, 71, 116);
+    margin: 30px auto;
+    display:block;
+    text-align: center;
+    font-size: 4em;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+}
+
+li{
+    padding: 10px 0;
+    font-size: 1.3rem;
+}
+.todoinput{
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+.todoinput input{
     width: 100%;
+    font-size: 1.5rem;
+    border:none;
 }
-.data.done {
+input[type="text"]{
+    outline:none;
+}
+
+.btn{
+    border:none;
+    background: transparent;
+    cursor: pointer;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+.btn.active{
+    border:1px solid rgb(204, 204, 204);
+}
+.btn:focus , .btn:active {
+    outline: none;
+}
+.menu{
+    padding-top: 20px;
+    width: 100%;
+    display:flex;
+    border-top: 1px solid rgb(204, 204, 204) ;
+    font-size: 1rem;
+}
+.count,.clear{
+    width: 25%;
+}
+.options{
+    width:50%;
+    display: flex;
+    justify-content: center;
+}
+.clear{
+    text-align: right;
+}
+
+.input input{
+    width: 100%;
+    font-size: 1.3rem;
+    border:none;
+}
+.done{
     text-decoration: line-through;
-    color: gray;
+    color:gray;
 }

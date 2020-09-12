@@ -31,6 +31,11 @@
 			return $todo->completed();
 		}
 
+		public function allActive(){
+			$todo = new Todo;
+			return $todo->active();
+		}
+
 		public function clear(){
 			$todo = new Todo;
 			return $todo->delete();
