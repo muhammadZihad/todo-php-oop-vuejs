@@ -14,7 +14,7 @@
                 <li class="todoinput"><input type="text"  v-model="title" type="text"  @keyup.enter="newTodo"  placeholder="What needs to be done?"></li>
                 <li  v-for="(todo,index) in todos" :key="todo.id"  class="todoitem">
                     <div class="text" v-if=" !todo.edit" class="data" @dblclick="editOn(todo,index)"  :class="{done : todo.complete}">
-                        <input type="checkbox" :value="todo.complete" :checked="todo.complete" @change="updateTodo(todo, true)"> {{todo.title}}
+                        <input type="checkbox" v-if="!todo.complete" :value="todo.complete" :checked="todo.complete" @change="updateTodo(todo, true)"> {{todo.title}}
                     </div>
                     <div v-else class="input">
                         <input type="text"  v-model="todo.title" @keydown.enter="updateTodo(todo)">
@@ -46,13 +46,21 @@
                 editing:false,
                 currentIndex:{},
                 state:1,
+                count:0
             },
             mounted:function (){
                 this.allTodos();
             },
             computed:{
                 counter(){
-                    return this.todos.length  ;
+                    let count = 0;
+                    this.todos.forEach(todo=>{
+                        if(!todo.complete)
+                            count++;
+                    });
+                    if(this.state === 3) count = this.count;
+                    this.count = count;
+                    return count  ;
                 }
             },
             methods:{
